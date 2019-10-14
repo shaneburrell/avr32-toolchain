@@ -139,7 +139,7 @@ bd_gcc=${builddir}/gcc
 bd_newlib=${builddir}/newlib
 bd_gdb=${builddir}/gdb
 logdir="${rootdir}/logs-${VERSION}"
-installdir="/usr/local/avr32-gnu-toolchain-linux_x86_64"
+installdir="${rootdir}/avr32-gnu-toolchain-linux_x86_64"
 autocheckout="--auto-checkout"
 autopull="--no-auto-pull"
 make_load="`(echo processor; cat /proc/cpuinfo 2>/dev/null) \
@@ -606,7 +606,7 @@ fi
 # Create tarball 
 echo "Create tarball for install" >> "${logfile}"
 cd "${rootdir}"
-tar czf avr32-gnu-toolchain-${VERSION}.${PATCHLEVEL}-linux.any.x86_64.tar.gz -C /usr/local avr32-gnu-toolchain-linux_x86_64
+tar czf avr32-gnu-toolchain-${VERSION}.${PATCHLEVEL}-linux.any.x86_64.tar.gz -C ${rootdir} avr32-gnu-toolchain-linux_x86_64
 
 # Combine toolchain with headers, avr32 program and install script
 echo "Create combined installation package" >> "${logfile}"
