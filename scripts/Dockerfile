@@ -26,3 +26,5 @@ RUN apt-get update && apt-get install -y \
 RUN wget http://ftp.gnu.org/gnu/texinfo/texinfo-4.13.tar.gz && tar xf texinfo-4.13.tar.gz && cd texinfo-4.13 && ./configure && make && make install
 
 RUN pip install --upgrade pip
+RUN mkdir /home/toolbuild
+RUN mkdir /home/toolbuild/scripts

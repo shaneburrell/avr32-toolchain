@@ -37,39 +37,24 @@ echo "Installation is possible"
 else
 echo "Installing $package_name Binaries for $arch"
 tar xfz avr32-gnu-toolchain-3.4.2.435-linux.any.$arch.tar.gz
-if [ ! -d /usr/local/avr32 ]; then
-sudo mkdir /usr/local/avr32
+if [ ! -d ~/avr32-tools ]; then
+mkdir ~/avr32-tools
 fi
-sudo cp -ra avr32-gnu-toolchain-linux_$arch/* /usr/local/avr32/
+cp -ra avr32-gnu-toolchain-linux_$arch/* ~/avr32-tools
 rm -rf ./avr32-gnu-toolchain-linux_$arch
 
 echo "Installing $package_name Utilities for $arch"
 tar xfz avr32-utilities-$arch.tar.gz
-sudo cp -ra avr32-utilities-$arch/bin/* /usr/bin
-sudo cp -ra avr32-utilities-$arch/share/* /usr/share
-sudo cp -ra avr32-utilities-$arch/etc/* /etc
+cp -ra avr32-utilities-$arch/bin/* ~/avr32-tools/bin
+cp -ra avr32-utilities-$arch/share/* ~/avr32-tools/share
+cp -ra avr32-utilities-$arch/etc/* ~/avr32-tools/etc
 rm -rf avr32-utilities-$arch
 
 echo "Installing $package_name Headers"
 unzip -q atmel-headers-6.1.3.1475.zip
-sudo cp -ra atmel-headers-6.1.3.1475/avr32/ /usr/local/avr32/avr32/include/
+cp -ra atmel-headers-6.1.3.1475/avr32/ ~/avr32-tools/avr32/include/
 rm -rf atmel-headers-6.1.3.1475
 
-echo "Checking environment"
-# Setup path
-add_to_path='/usr/local/avr32/bin'
-if ! grep -q "PATH.*$add_to_path" ~/.profile; then
-echo "Setting up PATH: Adding $add_to_path to PATH"
-echo "PATH=\$PATH:$add_to_path" >> ~/.profile
-export PATH=\$PATH:$add_to_path
-echo $PATH
-fi
-# Setup aliases
-if ! grep -q "alias waf" ~/.bash_aliases; then
-echo "Setting up aliases"
-echo "alias waf=./waf" >> ~/.bash_aliases
-echo "alias a=ack-grep" >> ~/.bash_aliases
-fi
 echo "$package_name installation completed OK"
 fi
 
