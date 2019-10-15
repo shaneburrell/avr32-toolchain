@@ -1,0 +1,1 @@
+docker run --rm -v ${PWD}:/home/toolbuild -u 1000:1000 -w /home/toolbuild/scripts -t toolchainbuild ./build-all.sh
