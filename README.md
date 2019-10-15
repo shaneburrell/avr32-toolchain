@@ -1,6 +1,6 @@
-## Gomspace AVR32 toolchain
+## AVR32 toolchain
 
-This repository contains the scripts needed to build the AVR32 toolchain with GomSpace modifications.
+This repository contains the scripts needed to build the AVR32 toolchain with GomSpace and my own modifications.
 It is based on the work done by https://github.com/embecosm/avr32-toolchain
 
 ### Repository structure:
