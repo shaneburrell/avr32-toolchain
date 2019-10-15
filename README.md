@@ -27,7 +27,7 @@ The toolchain is built inside a docker container. To create the docker container
 
 When the container is ready, the toolchain can be built like this:
 
-  docker run --rm -v `pwd`:/home/toolbuild -w /home/toolbuild/scripts -t toolchainbuild ./build-all.sh
+docker run --rm -v pwd:/avr32-toolchain:/home/toolbuild -u `id -u`:`id -g` -w /home/toolbuild/scripts -t toolchainbuild ./build-all.sh
 
 After 10-15 minutes a new version of the toolchain is available as: 
 ``avr32-gnu-toolchain-<version>.<patchlevel>-linux.any.x86_64.tar.gz.``
